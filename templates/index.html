@@ -5,22 +5,75 @@
     <title>Agent Chat</title>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <style>
-        .message {
-            margin-bottom: 10px;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #cfe1b9;
+            margin: 20px;
+            padding: 5px 300px;
         }
+
+        h1, h3 {
+            text-align: center;
+            color: #000000;
+        }
+
         #chat {
-            max-height: 400px;
+            max-height: 600px;
             overflow-y: auto;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            background-color: #dce1de;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Chat with Agents</h1>
+    <h3>Designed by Niklas and Sofiia</h3>
+    <div class="input">
+        <input type="text" id="topic_input" placeholder="Enter a topic..." autocomplete="off"/>
+        <button onclick="startConversation()">Start Conversation</button>
+    </div>
     <div id="chat"></div>
-    <input type="text" id="topic_input" placeholder="Enter a topic..." autocomplete="off"/>
-    <button onclick="startConversation()">Start Conversation</button>
 
     <script>
         var socket = io.connect('http://127.0.0.1:5000');
